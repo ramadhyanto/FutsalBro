@@ -13,7 +13,8 @@ import { Items } from '../mocks/providers/items';
 import { Settings, User, Api } from '../providers';
 import { MyApp } from './app.component';
 import { PropertiesProvider } from '../providers/properties/properties';
-import { ServiceProvider } from '../providers/service/service';
+import { SignupServiceProvider } from '../providers/signup-service/signup-service';
+import { LoginServiceProvider } from '../providers/login-service/login-service';
 
 // The translate loader needs to know where to load i18n files
 // in Ionic's static asset pipeline.
@@ -68,7 +69,8 @@ export function provideSettings(storage: Storage) {
     // Keep this to enable Ionic's runtime error handling during development
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     PropertiesProvider,
-    ServiceProvider
+    SignupServiceProvider,
+    LoginServiceProvider
   ]
 })
 export class AppModule { }

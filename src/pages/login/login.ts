@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { IonicPage, NavController, ToastController, LoadingController } from 'ionic-angular';
 import { MainPage } from '../';
-import { ServiceProvider } from '../../providers/service/service';
 import { PropertiesProvider } from '../../providers/properties/properties';
+import { LoginServiceProvider } from '../../providers/login-service/login-service';
 
 
 @IonicPage()
@@ -24,11 +24,11 @@ export class LoginPage {
   // private loginErrorString: string;
 
   constructor(public navCtrl: NavController,
-    public serviceProvider: ServiceProvider,
+    public login: LoginServiceProvider,
     public toastCtrl: ToastController,
     public translateService: TranslateService,
     public loadingCtrl: LoadingController,
-  public properties: PropertiesProvider) {
+    public properties: PropertiesProvider) {
 
     this.translateService.get('LOGIN_ERROR').subscribe((value) => {
       // this.loginErrorString = value;
@@ -41,7 +41,7 @@ export class LoginPage {
       content: "Harap Tunggu"
     });
     loader.present();
-    this.serviceProvider.login(this.account).subscribe((resp) => {
+    this.login.login(this.account).subscribe((resp) => {
       loader.dismiss();
       let toast = this.toastCtrl.create({
         message: "Sukses Login !",

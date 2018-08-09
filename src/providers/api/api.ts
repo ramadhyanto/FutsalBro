@@ -6,21 +6,18 @@ import { PropertiesProvider } from '../properties/properties';
  * Api is a generic REST Api handler. Set your API url first.
  */
 
-interface handlerResponse {
-  isSuccessFull: string;
-  message: string;
-}
-
 @Injectable()
 export class Api {
   url: string = "http://192.168.1.113:8080";
-  
+
   constructor(public http: HttpClient, public properties: PropertiesProvider) {
   }
 
   getHeaders() {
-    let headers = new HttpHeaders().set("Authorization", "Bearer " + this.properties.token);
-    return headers;
+    if (this.properties.token) {
+      let headers = new HttpHeaders().set("Authorization", "Bearer " + this.properties.token);
+      return headers;
+    }
   }
 
   get(endpoint: string, params?: any, reqOpts?: any) {

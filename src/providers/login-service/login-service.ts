@@ -1,23 +1,21 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Api } from '../api/api';
 import { PropertiesProvider } from '../properties/properties';
+import { Api } from '../api/api';
 
 /*
-  Generated class for the ServiceProvider provider.
+  Generated class for the LoginServiceProvider provider.
 
   See https://angular.io/guide/dependency-injection for more info on providers
   and Angular DI.
 */
 @Injectable()
-export class ServiceProvider {
+export class LoginServiceProvider {
   _user: any;
-
-  constructor(public api: Api, public properties: PropertiesProvider, public http: HttpClient) {
-    console.log('Hello ServiceProvider Provider');
+  constructor(public http: HttpClient,public properties: PropertiesProvider, public api: Api) {
+    console.log('Hello LoginServiceProvider Provider');
   }
 
-  // LOGIN & SIGNUP SERVICE
   login(accountInfo: any) {
     let seq = this.api.post("api/login", accountInfo);
 
@@ -31,24 +29,21 @@ export class ServiceProvider {
     return seq;
   }
 
-  signup(accountInfo: any) {
-    let seq = this.api.post("register", accountInfo);
-    seq.subscribe((res: any) => {
+  _loggedIn(resp) {
+    this._user = resp.user;
+  }
+
+  detailProfile() {
+    let params = { id: 81 };
+    let req = this.api.get('team', params);
+    req.subscribe((res: any) => {
+      console.log(res);
+      // If the API returned a successful response, mark the user as logged in
+      console.log(res.isSuccessFull);
     }, err => {
       console.error('ERROR', err);
     });
 
-    return seq;
-
   }
-
-  logout() {
-    this._user = null;
-  }
-
-  _loggedIn(resp) {
-    this._user = resp.user;
-  }
-  // LOGIN & SIGNUP SERVICE
 
 }

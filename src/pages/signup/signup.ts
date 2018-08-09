@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { IonicPage, NavController, ToastController, LoadingController } from 'ionic-angular';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ServiceProvider } from '../../providers/service/service';
+import { SignupServiceProvider } from '../../providers/signup-service/signup-service';
 
 @IonicPage()
 @Component({
@@ -41,7 +41,7 @@ export class SignupPage {
   // private signupErrorString: string;
 
   constructor(public navCtrl: NavController,
-    public serviceProvider: ServiceProvider,
+    public signup: SignupServiceProvider,
     public toastCtrl: ToastController,
     public translateService: TranslateService,
     public loadingCtrl: LoadingController) {
@@ -64,7 +64,7 @@ export class SignupPage {
     });
   }
 
-  
+
   doSignup() {
     if (this.account.password != this.validatePassword.repassword) {
       let toast = this.toastCtrl.create({
@@ -79,7 +79,7 @@ export class SignupPage {
       });
       loader.present();
       // Attempt to login in through our User service
-      this.serviceProvider.signup(this.account).subscribe((resp) => {
+      this.signup.signup(this.account).subscribe((resp) => {
         loader.dismiss();
         let toast = this.toastCtrl.create({
           message: "Sukses Sign Up !",
