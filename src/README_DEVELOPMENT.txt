@@ -7,3 +7,5 @@
 
 #POST
 ** After POST data if want to console log,use this : console.log(resp["isSuccessFull"]); NOT console.log(resp.isSuccessFull);.
+** After POST/PUT if data isSuccessFull=false set the message like this : let errors = resp["errors"].map(e=>e.message).join("/n");
+

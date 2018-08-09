@@ -80,6 +80,7 @@ export class SignupPage {
       loader.present();
       // Attempt to login in through our User service
       this.signup.signup(this.account).subscribe((resp) => {
+        console.log(resp);
         if (resp["isSuccessFull"]) {
           loader.dismiss();
           let toast = this.toastCtrl.create({
@@ -94,7 +95,14 @@ export class SignupPage {
           });
         }
         else {
-
+          loader.dismiss();
+          let errors = resp["errors"].map(e=>e.message).join("/n");
+          let toast = this.toastCtrl.create({
+            message: errors,
+            duration: 3000,
+            position: 'middle'
+          });
+          toast.present();
         }
 
       }, (err) => {
