@@ -80,17 +80,23 @@ export class SignupPage {
       loader.present();
       // Attempt to login in through our User service
       this.signup.signup(this.account).subscribe((resp) => {
-        loader.dismiss();
-        let toast = this.toastCtrl.create({
-          message: "Sukses Sign Up !",
-          duration: 3000,
-          position: 'middle'
-        });
-        toast.present();
-        this.navCtrl.setRoot('LoginPage', {}, {
-          animate: true,
-          direction: 'forward'
-        });
+        if (resp["isSuccessFull"]) {
+          loader.dismiss();
+          let toast = this.toastCtrl.create({
+            message: "Sukses Sign Up !",
+            duration: 3000,
+            position: 'middle'
+          });
+          toast.present();
+          this.navCtrl.setRoot('LoginPage', {}, {
+            animate: true,
+            direction: 'forward'
+          });
+        }
+        else {
+
+        }
+
       }, (err) => {
         let toast = this.toastCtrl.create({
           message: "Gagal Sign Up ! Coba Lagi !",

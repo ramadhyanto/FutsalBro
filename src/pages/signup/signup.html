@@ -92,9 +92,9 @@
         <div class="error" *ngIf="signupform.get('teamName').hasError('maxlength') && signupform.get('teamName').touched">
           Maximum 15 characters
         </div>
-        <!-- <div class="error" *ngIf="signupform.get('teamName').hasError('pattern') && signupform.get('teamName').touched">
+        <div class="error" *ngIf="signupform.get('teamName').hasError('pattern') && signupform.get('teamName').touched">
           Team Name invalid
-        </div> -->
+        </div>
       </ion-item>
 
       <ion-item class="inputText">
@@ -111,9 +111,9 @@
         <div class="error" *ngIf="signupform.get('address').hasError('maxlength') && signupform.get('address').touched">
           Maximum 250 characters
         </div>
-        <!-- <div class="error" *ngIf="signupform.get('address').hasError('pattern') && signupform.get('address').touched">
+        <div class="error" *ngIf="signupform.get('address').hasError('pattern') && signupform.get('address').touched">
           Address invalid
-        </div> -->
+        </div>
       </ion-item>
 
       <ion-item class="inputText">
@@ -180,7 +180,7 @@
       </ion-item> -->
 
       <div class="signupButton">
-        <button ion-button color="colorGreen" block class="buttonSignup">{{ 'SIGNUP_BUTTON' | translate }}</button>
+        <button ion-button color="colorGreen" block class="buttonSignup" [disabled]="!signupform.valid">{{ 'SIGNUP_BUTTON' | translate }}</button>
       </div>
 
       <div style="text-align: center;padding-top: 20px;color: #000;">
