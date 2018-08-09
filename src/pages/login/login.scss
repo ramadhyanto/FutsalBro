@@ -1,0 +1,20 @@
+page-login {
+  ion-content {
+    background-image: url('../assets/img/loginPage.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  .logoLogin {
+    padding: 120px 70px 60px 70px;
+  }
+  .inputText {
+    padding: 0px 40px 15px 40px;
+  }
+  .buttonLogin {
+    border-radius: 25px;
+    height: 45px;
+  }
+  .loginButton {
+      padding: 30px 40px 0px 40px;
+  }
+}

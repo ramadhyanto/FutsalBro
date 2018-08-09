@@ -1,0 +1,30 @@
+page-signup {
+  ion-content {
+    background-image: url('../assets/img/loginPage.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  .logoSignup {
+    padding: 80px 70px 40px 70px;
+  }
+  .inputText {
+    padding: 0px 40px 5px 40px;
+  }
+  .buttonSignup {
+    border-radius: 25px;
+    height: 45px;
+  }
+  .signupButton {
+    padding: 40px 40px 0px 40px;
+  }
+  .error {
+    color: rgb(223, 62, 62);
+    font-size: 11px;
+    padding-left: 30px;
+  }
+  .error1 {
+    color: rgb(75, 75, 75);
+    border-bottom: 1px solid #ff0000;
+    
+  }
+}
