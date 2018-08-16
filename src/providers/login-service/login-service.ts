@@ -20,7 +20,9 @@ export class LoginServiceProvider {
     let seq = this.api.post("api/login", accountInfo);
 
     seq.subscribe((res: any) => {
+      console.log(res);
       this.properties.token = res.access_token;
+      this.properties.userId = res.userId;
       this._loggedIn(res);
     }, err => {
       console.error('ERROR', err);

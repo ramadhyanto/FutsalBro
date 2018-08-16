@@ -106,6 +106,7 @@ export class SignupPage {
         }
 
       }, (err) => {
+        loader.dismiss();
         let toast = this.toastCtrl.create({
           message: "Gagal Sign Up ! Coba Lagi !",
           duration: 3000,

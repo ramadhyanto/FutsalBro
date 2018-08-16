@@ -1,3 +1,15 @@
 page-profile {
-
+    .fa {
+        font-size: 1.5em;
+        padding-right: 8px;
+        color: #000;
+        vertical-align: middle;
+    }
+    .label-md[stacked] {
+        color: #000;
+        font-size: 1.5rem;
+    }
+    .item-label-stacked .text-input-md, .item-label-floating .text-input-md {
+        font-size: 13px;
+    }
 }

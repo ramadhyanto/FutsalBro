@@ -1,9 +1,6 @@
 import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { IonicPage, NavController } from 'ionic-angular';
-import { DashboardPage } from '../dashboard/dashboard';
-import { SparingPage } from '../sparing/sparing';
-import { ProfilePage } from '../profile/profile';
 
 @IonicPage()
 @Component({
@@ -11,9 +8,9 @@ import { ProfilePage } from '../profile/profile';
   templateUrl: 'tabs.html'
 })
 export class TabsPage {
-  tab1Root: any = DashboardPage;
-  tab2Root: any = SparingPage;
-  tab3Root: any = ProfilePage;
+  tab1Root: string = "DashboardPage";
+  tab2Root: string = "SparingPage";
+  tab3Root: string = "ProfilePage";
 
   tab1Title = " ";
   tab2Title = " ";

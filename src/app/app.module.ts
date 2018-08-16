@@ -15,6 +15,11 @@ import { MyApp } from './app.component';
 import { PropertiesProvider } from '../providers/properties/properties';
 import { SignupServiceProvider } from '../providers/signup-service/signup-service';
 import { LoginServiceProvider } from '../providers/login-service/login-service';
+import { ProfileServiceProvider } from '../providers/profile-service/profile-service';
+
+// import {DashboardPage} from '../pages/dashboard/dashboard';
+
+
 
 // The translate loader needs to know where to load i18n files
 // in Ionic's static asset pipeline.
@@ -69,7 +74,8 @@ export function provideSettings(storage: Storage) {
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     PropertiesProvider,
     SignupServiceProvider,
-    LoginServiceProvider
+    LoginServiceProvider,
+    ProfileServiceProvider
   ]
 })
 export class AppModule { }
