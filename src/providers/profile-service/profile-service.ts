@@ -16,15 +16,20 @@ export class ProfileServiceProvider {
   }
 
   getProfile(accountInfo: any) {
-    let seq = this.api.get("team", accountInfo);
-
-    seq.subscribe((res: any) => {
-      console.log(res);
+    let req = this.api.get("team", accountInfo);
+    req.subscribe((res: any) => {
     }, err => {
       console.error('ERROR', err);
     });
+    return req;
+  }
 
-    return seq;
-
+  updateData(accountData: any) {
+    let req = this.api.put("team", accountData);
+    req.subscribe((res: any) => {
+    }, err => {
+      console.error('ERROR', err);
+    });
+    return req;
   }
 }

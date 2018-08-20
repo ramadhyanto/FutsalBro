@@ -9,15 +9,15 @@ import { PropertiesProvider } from '../properties/properties';
 @Injectable()
 export class Api {
   url: string = "http://192.168.1.104:8080";
-
+  headers;
   constructor(public http: HttpClient, public properties: PropertiesProvider) {
   }
 
   getHeaders() {
-    if (this.properties.token) {
-      let headers = new HttpHeaders().set("Authorization", "Bearer " + this.properties.token);
-      return headers;
+    if (this.properties.token && !this.headers) {
+      this.headers = new HttpHeaders().set("Authorization", "Bearer " + this.properties.token);
     }
+    return this.headers;
   }
 
   get(endpoint: string, params?: any, reqOpts?: any) {
@@ -50,6 +50,11 @@ export class Api {
   }
 
   put(endpoint: string, body: any, reqOpts?: any) {
+    if (!reqOpts) {
+      reqOpts = {
+        headers: this.getHeaders()
+      };
+    }
     return this.http.put(this.url + '/' + endpoint, body, reqOpts);
   }
 

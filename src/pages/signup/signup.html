@@ -101,7 +101,7 @@
         <ion-input [(ngModel)]="account.address" placeholder="Address" clearInput type="address" formControlName="address" [class.error1]="!signupform.controls.address.valid && signupform.controls.address.dirty"></ion-input>
       </ion-item>
 
-      <ion-item no-lines *ngIf="( signupform.get('address').hasError('minlength') || signupform.get('address').hasError('maxlength') ||signupform.get('address').hasError('pattern') ||signupform.get('address').hasError('required') ) && signupform.get('teamName').touched">
+      <ion-item no-lines *ngIf="( signupform.get('address').hasError('minlength') || signupform.get('address').hasError('maxlength') ||signupform.get('address').hasError('pattern') ||signupform.get('address').hasError('required') ) && signupform.get('address').touched">
         <div class="error" *ngIf="signupform.get('address').hasError('required') && signupform.get('address').touched">
           Please input your Address
         </div>
@@ -120,7 +120,7 @@
         <ion-input [(ngModel)]="account.contactNo" placeholder="Contact Number" clearInput type="contactNo" formControlName="contactNo" [class.error1]="!signupform.controls.contactNo.valid && signupform.controls.contactNo.dirty"></ion-input>
       </ion-item>
 
-      <ion-item no-lines *ngIf="( signupform.get('contactNo').hasError('minlength') || signupform.get('contactNo').hasError('maxlength') ||signupform.get('contactNo').hasError('pattern') ||signupform.get('contactNo').hasError('required') ) && signupform.get('teamName').touched">
+      <ion-item no-lines *ngIf="( signupform.get('contactNo').hasError('minlength') || signupform.get('contactNo').hasError('maxlength') ||signupform.get('contactNo').hasError('pattern') ||signupform.get('contactNo').hasError('required') ) && signupform.get('contactNo').touched">
         <div class="error" *ngIf="signupform.get('contactNo').hasError('required') && signupform.get('contactNo').touched">
           Please input your Contact Number
         </div>

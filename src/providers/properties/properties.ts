@@ -12,6 +12,7 @@ import { AlertController } from 'ionic-angular';
 export class PropertiesProvider {
   token: string = null;
   userId: number = null;
+  id: number = null;
 
   constructor(public http: HttpClient,public alertCtrl: AlertController) {
     console.log('Hello PropertiesProvider Provider');
