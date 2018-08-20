@@ -17,19 +17,26 @@ export class ProfileServiceProvider {
 
   getProfile(accountInfo: any) {
     let req = this.api.get("team", accountInfo);
-    req.subscribe((res: any) => {
-    }, err => {
-      console.error('ERROR', err);
-    });
-    return req;
+    return new Promise(resolve => {
+      req.subscribe(res => {
+        resolve(res)
+      }, err => {
+        console.error('ERROR', err);
+      });
+    })
+
+    // return req;
   }
 
   updateData(accountData: any) {
     let req = this.api.put("team", accountData);
-    req.subscribe((res: any) => {
-    }, err => {
-      console.error('ERROR', err);
-    });
-    return req;
+    return new Promise(resolve => {
+      req.subscribe(res => {
+        resolve(res);
+      }, err => {
+        console.error('ERROR', err);
+      });
+    })
+    // return req;
   }
 }
