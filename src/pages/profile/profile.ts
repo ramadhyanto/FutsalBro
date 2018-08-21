@@ -79,8 +79,8 @@ export class ProfilePage {
       content: "Harap Tunggu"
     });
     loader.present();
-    this.profile.getProfile(this.data).subscribe((resp) => {
-      this.player.teamId = resp["data"]["id"];
+    this.profile.getProfile(this.data).then((resp) => {
+      this.accountData.id = resp["data"]["id"];
       this.accountData.teamName = resp["data"]["teamName"];
       this.accountData.address = resp["data"]["address"];
       this.accountData.contactNo = resp["data"]["contactNo"];
@@ -102,11 +102,14 @@ export class ProfilePage {
   }
 
   updateData() {
+    console.log("juuhh");
     let loader = this.loadingCtrl.create({
       content: "Harap Tunggu"
     });
     loader.present();
-    this.profile.updateData(this.accountData).subscribe((resp) => {
+    console.log(this.accountData);
+    this.profile.updateData(this.accountData).then((resp) => {
+      console.log(resp);
       loader.dismiss();
     }, (err) => {
       loader.dismiss();
