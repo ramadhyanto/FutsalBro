@@ -7,14 +7,14 @@
 <ion-header>
 
   <ion-navbar>
-    <form (submit)="updateData()" [formGroup]="profileform">
+    <!-- <form (submit)="updateData()" [formGroup]="profileform">
       <ion-buttons right>
         <button ion-button icon-end type="submit">
           EDIT
         </button>
-      </ion-buttons>
+      </ion-buttons> -->
       <ion-title>Profile</ion-title>
-    </form>
+    <!-- </form> -->
   </ion-navbar>
 
 </ion-header>
@@ -24,13 +24,16 @@
   <form (submit)="updateData()" [formGroup]="profileform">
     <ion-row>
       <ion-col text-center>
-        <img [src]="base64Image" style="border-radius:50%;height:12rem;width:12rem;">
+        <img src="data:image/jpg;base64,{{accountData.base64Image}}" style="border-radius:50%;height:12rem;width:12rem;" (click)="openImagePicker()">
       </ion-col>
     </ion-row>
     <ion-row>
       <ion-col text-center>
         <ion-label>M.Renaldi Ramadhyanto</ion-label>
         <ion-label>SMK Negeri 7 Semarang</ion-label>
+        <button ion-button icon-end type="submit">
+            EDIT
+          </button>
       </ion-col>
     </ion-row>
 
@@ -117,4 +120,28 @@
       </div>
     </ion-item>
   </form>
+
+  <ion-list>
+    <ion-list-header>
+      <ion-label>
+        <i class="fa fa-users"></i>Team Player</ion-label>
+    </ion-list-header>
+    <ion-item-sliding *ngFor="let player of playerList">
+      <ion-item>
+        <h2>{{player.playerName}}</h2>
+        <p>Age {{player.age}} years || Position {{player.playerPosition}}</p>
+      </ion-item>
+      <ion-item-options side="right">
+        <button ion-button color="primary">
+            <ion-icon ios="logo-instagram" md="logo-instagram"></ion-icon>
+        </button>
+        <button ion-button color="danger">
+            <ion-icon ios="logo-facebook" md="logo-facebook"></ion-icon>
+        </button>
+        <button ion-button color="dark">
+            <ion-icon ios="logo-twitter" md="logo-twitter"></ion-icon>
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
 </ion-content>

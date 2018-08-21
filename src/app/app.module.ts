@@ -9,6 +9,9 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
+import { ImagePicker } from '@ionic-native/image-picker';
+import { Crop } from '@ionic-native/crop';
+
 import { Items } from '../mocks/providers/items';
 import { Settings, Api } from '../providers';
 import { MyApp } from './app.component';
@@ -16,6 +19,7 @@ import { PropertiesProvider } from '../providers/properties/properties';
 import { SignupServiceProvider } from '../providers/signup-service/signup-service';
 import { LoginServiceProvider } from '../providers/login-service/login-service';
 import { ProfileServiceProvider } from '../providers/profile-service/profile-service';
+import { BookingServiceProvider } from '../providers/booking-service/booking-service';
 
 // import {DashboardPage} from '../pages/dashboard/dashboard';
 
@@ -66,6 +70,8 @@ export function provideSettings(storage: Storage) {
   providers: [
     Api,
     Items,
+    ImagePicker,
+		Crop,
     Camera,
     SplashScreen,
     StatusBar,
@@ -75,7 +81,8 @@ export function provideSettings(storage: Storage) {
     PropertiesProvider,
     SignupServiceProvider,
     LoginServiceProvider,
-    ProfileServiceProvider
+    ProfileServiceProvider,
+    BookingServiceProvider
   ]
 })
 export class AppModule { }

@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { BookingPage } from '../booking/booking';
 
 /**
- * Generated class for the DashboardPage page.
+ * Generated class for the BookingPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -11,21 +10,16 @@ import { BookingPage } from '../booking/booking';
 
 @IonicPage()
 @Component({
-  selector: 'page-dashboard',
-  templateUrl: 'dashboard.html',
+  selector: 'page-booking',
+  templateUrl: 'booking.html',
 })
-export class DashboardPage {
+export class BookingPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad DashboardPage');
-  }
-
-  bookingField () {
-    console.log("tes");
-    this.navCtrl.push(BookingPage);
+    console.log('ionViewDidLoad BookingPage');
   }
 
 }
