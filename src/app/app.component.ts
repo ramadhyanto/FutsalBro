@@ -39,7 +39,8 @@ export class MyApp {
     { title: 'Signup', component: 'SignupPage' },
     { title: 'Menu', component: 'MenuPage' },
     { title: 'Profile', component: 'ProfilePage' },
-    { title: 'Dashboard', component: 'DashboardPage' }
+    { title: 'Dashboard', component: 'DashboardPage' },
+    { title: 'Booking', component: 'BookingPage' }
   ]
 
   constructor(private translate: TranslateService, platform: Platform, settings: Settings, private config: Config, private statusBar: StatusBar, private splashScreen: SplashScreen) {

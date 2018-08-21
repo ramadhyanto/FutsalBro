@@ -28,6 +28,15 @@ export class ProfileServiceProvider {
     // return req;
   }
 
+  getPlayer(teamId: any) {
+    let req = this.api.get("player", teamId);
+    req.subscribe((res: any) => {
+    }, err => {
+      console.error('ERROR', err);
+    });
+    return req;
+  }
+
   updateData(accountData: any) {
     let req = this.api.put("team", accountData);
     return new Promise(resolve => {

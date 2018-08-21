@@ -8,7 +8,7 @@ import { IonicPage, NavController } from 'ionic-angular';
   templateUrl: 'tabs.html'
 })
 export class TabsPage {
-  tab1Root: string = "DashboardPage";
+  tab1Root: string = "BookingPage";
   tab2Root: string = "SparingPage";
   tab3Root: string = "ProfilePage";
 
