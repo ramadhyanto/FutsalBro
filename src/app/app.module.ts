@@ -8,18 +8,25 @@ import { IonicStorageModule, Storage } from '@ionic/storage';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
-
 import { ImagePicker } from '@ionic-native/image-picker';
 import { Crop } from '@ionic-native/crop';
 
 import { Items } from '../mocks/providers/items';
 import { Settings, Api } from '../providers';
 import { MyApp } from './app.component';
+import { DatePipe } from '@angular/common'
 import { PropertiesProvider } from '../providers/properties/properties';
 import { SignupServiceProvider } from '../providers/signup-service/signup-service';
 import { LoginServiceProvider } from '../providers/login-service/login-service';
 import { ProfileServiceProvider } from '../providers/profile-service/profile-service';
 import { BookingServiceProvider } from '../providers/booking-service/booking-service';
+import { ModalServiceProvider } from '../providers/modal-service/modal-service';
+import { ListstadiumServiceProvider } from '../providers/liststadium-service/liststadium-service';
+import { ListFutsalFieldServiceProvider } from '../providers/list-futsal-field-service/list-futsal-field-service';
+import { InputFutsalFieldServiceProvider } from '../providers/input-futsal-field-service/input-futsal-field-service';
+import { DetailFutsalFieldServiceProvider } from '../providers/detail-futsal-field-service/detail-futsal-field-service';
+import { ListFieldServiceProvider } from '../providers/list-field-service/list-field-service';
+import { DetailFieldServiceProvider } from '../providers/detail-field-service/detail-field-service';
 
 // import {DashboardPage} from '../pages/dashboard/dashboard';
 
@@ -71,10 +78,11 @@ export function provideSettings(storage: Storage) {
     Api,
     Items,
     ImagePicker,
-		Crop,
+    Crop,
     Camera,
     SplashScreen,
     StatusBar,
+    DatePipe,
     { provide: Settings, useFactory: provideSettings, deps: [Storage] },
     // Keep this to enable Ionic's runtime error handling during development
     { provide: ErrorHandler, useClass: IonicErrorHandler },
@@ -82,7 +90,14 @@ export function provideSettings(storage: Storage) {
     SignupServiceProvider,
     LoginServiceProvider,
     ProfileServiceProvider,
-    BookingServiceProvider
+    BookingServiceProvider,
+    ModalServiceProvider,
+    ListstadiumServiceProvider,
+    ListFutsalFieldServiceProvider,
+    InputFutsalFieldServiceProvider,
+    DetailFutsalFieldServiceProvider,
+    ListFieldServiceProvider,
+    DetailFieldServiceProvider
   ]
 })
 export class AppModule { }

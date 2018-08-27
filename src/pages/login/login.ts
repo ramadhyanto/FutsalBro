@@ -5,7 +5,6 @@ import { MainPage } from '../';
 import { PropertiesProvider } from '../../providers/properties/properties';
 import { LoginServiceProvider } from '../../providers/login-service/login-service';
 
-
 @IonicPage()
 @Component({
   selector: 'page-login',
@@ -15,7 +14,7 @@ export class LoginPage {
   // The account fields for the login form.
   // If you're using the username field with or without email, make
   // sure to add it to the type
-  account: { username: string, password: string } = {
+  account: {username: string, password: string} = {
     username: 'ramadhyanto',
     password: 'rama'
   };
@@ -49,7 +48,10 @@ export class LoginPage {
         position: 'middle'
       });
       toast.present();
-      this.navCtrl.push(MainPage);
+      this.navCtrl.setRoot(MainPage, {}, {
+        animate: true,
+        direction: 'forward'
+      });
     }, (err) => {
       loader.dismiss();
       // Unable to log in

@@ -15,21 +15,21 @@
 
 <ion-content padding>
     <ion-list>
-
         <ion-item>
           <ion-label stacked>Lokasi</ion-label>
-          <ion-input type="text"></ion-input>
+          <ion-input type="text" (click)="openModal()" [(ngModel)]="location"></ion-input>
         </ion-item>
       
         <ion-item>
           <ion-label stacked>Tanggal Bermain</ion-label>
-          <ion-input type="date"></ion-input>
+          <ion-datetime displayFormat="YYYY MMM, DD HH" [(ngModel)]="dateplay"></ion-datetime>
         </ion-item>
 
         <ion-item>
           <ion-label stacked>Lama Bermain</ion-label>
-          <ion-input type="time"></ion-input>
+          <ion-input type="number" [(ngModel)]="timeplay"></ion-input>
         </ion-item>
-      
+        <button ion-button (click)="getStadium()">Search</button>
       </ion-list>
+      
 </ion-content>

@@ -8,7 +8,7 @@ import { PropertiesProvider } from '../properties/properties';
 
 @Injectable()
 export class Api {
-  url: string = "http://192.168.1.105:8080";
+  url: string = "http://192.168.1.100:8080";
   headers;
   constructor(public http: HttpClient, public properties: PropertiesProvider) {
   }
@@ -38,13 +38,14 @@ export class Api {
     if (this.getHeaders()) {
       reqOpts.headers = this.getHeaders();
     }
-
     return this.http.get(this.url + '/' + endpoint, reqOpts);
   }
 
   post(endpoint: string, body: any, reqOpts?: any) {
-    if (this.getHeaders()) {
-      reqOpts.headers = this.getHeaders();
+    if (!reqOpts) {
+      reqOpts = {
+        headers: this.getHeaders()
+      };
     }
     return this.http.post(this.url + '/' + endpoint, body, reqOpts);
   }
@@ -59,6 +60,11 @@ export class Api {
   }
 
   delete(endpoint: string, reqOpts?: any) {
+    if (!reqOpts) {
+      reqOpts = {
+        headers: this.getHeaders()
+      };
+    }
     return this.http.delete(this.url + '/' + endpoint, reqOpts);
   }
 
