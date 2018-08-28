@@ -22,4 +22,12 @@ export class DashboardPage {
     console.log('ionViewDidLoad DashboardPage');
   }
 
+  inputField () {
+    this.navCtrl.push("InputFutsalFieldPage");
+  }
+
+  bookingField () {
+    this.navCtrl.push("BookingPage");
+  }
+
 }

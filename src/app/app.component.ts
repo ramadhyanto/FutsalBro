@@ -4,6 +4,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { TranslateService } from '@ngx-translate/core';
 import { Config, Nav, Platform } from 'ionic-angular';
 
+
 import { FirstRunPage } from '../pages';
 import { Settings } from '../providers';
 
@@ -31,19 +32,17 @@ export class MyApp {
 
   @ViewChild(Nav) nav: Nav;
 
-  pages: any[] = [
-    { title: 'Tutorial', component: 'TutorialPage' },
-    { title: 'Welcome', component: 'WelcomePage' },
-    { title: 'Tabs', component: 'TabsPage' },
-    { title: 'Cards', component: 'CardsPage' },
-    { title: 'Content', component: 'ContentPage' },
-    { title: 'Login', component: 'LoginPage' },
-    { title: 'Signup', component: 'SignupPage' },
-    { title: 'Master Detail', component: 'ListMasterPage' },
-    { title: 'Menu', component: 'MenuPage' },
-    { title: 'Settings', component: 'SettingsPage' },
-    { title: 'Search', component: 'SearchPage' }
-  ]
+  // pages: any[] = [
+  //   { title: 'Tutorial', component: 'TutorialPage' },
+  //   { title: 'Welcome', component: 'WelcomePage' },
+  //   { title: 'Tabs', component: 'TabsPage' },
+  //   { title: 'Login', component: 'LoginPage' },
+  //   { title: 'Signup', component: 'SignupPage' },
+  //   { title: 'Menu', component: 'MenuPage' },
+  //   { title: 'Profile', component: 'ProfilePage' },
+  //   { title: 'Dashboard', component: 'DashboardPage' },
+  //   { title: 'Booking', component: 'BookingPage' }
+  // ]
 
   constructor(private translate: TranslateService, platform: Platform, settings: Settings, private config: Config, private statusBar: StatusBar, private splashScreen: SplashScreen) {
     platform.ready().then(() => {

@@ -7,12 +7,141 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>profile</ion-title>
+    <!-- <form (submit)="updateData()" [formGroup]="profileform">
+      <ion-buttons right>
+        <button ion-button icon-end type="submit">
+          EDIT
+        </button>
+      </ion-buttons> -->
+      <ion-title>Profile</ion-title>
+    <!-- </form> -->
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
+  <form (submit)="updateData()" [formGroup]="profileform">
+    <ion-row>
+      <ion-col text-center>
+        <img src="data:image/jpg;base64,{{accountData.base64Image}}" style="border-radius:50%;height:12rem;width:12rem;" (click)="openImagePicker()">
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col text-center>
+        <ion-label>M.Renaldi Ramadhyanto</ion-label>
+        <ion-label>SMK Negeri 7 Semarang</ion-label>
+        <button ion-button icon-end type="submit">
+            EDIT
+          </button>
+      </ion-col>
+    </ion-row>
 
+    <ion-item no-lines>
+      <ion-label stacked>
+        <i class="fa fa-users"></i>Team Name</ion-label>
+      <ion-input type="text" [(ngModel)]="accountData.teamName" formControlName="teamName" [class.error1]="!profileform.controls.teamName.valid && profileform.controls.teamName.dirty"></ion-input>
+    </ion-item>
+
+    <ion-item no-lines *ngIf="( profileform.get('teamName').hasError('minlength') || profileform.get('teamName').hasError('maxlength') ||profileform.get('teamName').hasError('pattern') ||profileform.get('teamName').hasError('required') ) && profileform.get('teamName').touched">
+      <div class="error" *ngIf="profileform.get('teamName').hasError('required') && profileform.get('teamName').touched">
+        Please input your Team Name
+      </div>
+    </ion-item>
+
+
+    <ion-item no-lines>
+      <ion-label stacked>
+        <i class="fa fa-envelope"></i>E-Mail</ion-label>
+      <ion-input type="text" [(ngModel)]="accountData.email" formControlName="email" [class.error1]="!profileform.controls.email.valid && profileform.controls.email.dirty"></ion-input>
+    </ion-item>
+
+    <ion-item no-lines *ngIf="( profileform.get('email').hasError('minlength') || profileform.get('email').hasError('maxlength') ||profileform.get('email').hasError('pattern') ||profileform.get('email').hasError('required') ) && profileform.get('email').touched">
+      <div class="error" *ngIf="profileform.get('email').hasError('required') && profileform.get('email').touched">
+        Please input your E-Mail
+      </div>
+      <div class="error" *ngIf="profileform.get('email').hasError('minlength') && profileform.get('email').touched">
+        Minimum 1 characters
+      </div>
+      <div class="error" *ngIf="profileform.get('email').hasError('maxlength') && profileform.get('email').touched">
+        Maximum 50 characters
+      </div>
+      <div class="error" *ngIf="profileform.get('email').hasError('pattern') && profileform.get('email').touched">
+        Email address invalid
+      </div>
+    </ion-item>
+
+
+    <ion-item no-lines>
+      <ion-label stacked>
+        <i class="fa fa-address-card"></i>ID Card</ion-label>
+      <ion-input type="text" [(ngModel)]="accountData.idCard" formControlName="idCard" [class.error1]="!profileform.controls.idCard.valid && profileform.controls.idCard.dirty"></ion-input>
+    </ion-item>
+
+    <ion-item no-lines *ngIf="( profileform.get('idCard').hasError('minlength') || profileform.get('idCard').hasError('maxlength') ||profileform.get('idCard').hasError('pattern') ||profileform.get('idCard').hasError('required') ) && profileform.get('idCard').touched">
+      <div class="error" *ngIf="profileform.get('idCard').hasError('required') && profileform.get('idCard').touched">
+        Please input your ID Card
+      </div>
+      <div class="error" *ngIf="profileform.get('idCard').hasError('minlength') && profileform.get('idCard').touched">
+        Minimum 5 characters
+      </div>
+      <div class="error" *ngIf="profileform.get('idCard').hasError('maxlength') && profileform.get('idCard').touched">
+        Maximum 20 characters
+      </div>
+      <div class="error" *ngIf="profileform.get('idCard').hasError('pattern') && profileform.get('idCard').touched">
+        ID Card invalid
+      </div>
+    </ion-item>
+
+    <ion-item no-lines>
+      <ion-label stacked>
+        <i class="fa fa-phone"></i>Contact</ion-label>
+      <ion-input type="text" [(ngModel)]="accountData.contactNo" formControlName="contactNo" [class.error1]="!profileform.controls.contactNo.valid && profileform.controls.contactNo.dirty"></ion-input>
+    </ion-item>
+
+    <ion-item no-lines>
+      <ion-label stacked>
+        <i class="fa fa-address-book"></i>Address</ion-label>
+      <ion-input type="text" [(ngModel)]="accountData.address" formControlName="address" [class.error1]="!profileform.controls.address.valid && profileform.controls.address.dirty"></ion-input>
+    </ion-item>
+
+    <ion-item no-lines *ngIf="( profileform.get('address').hasError('minlength') || profileform.get('address').hasError('maxlength') ||profileform.get('address').hasError('pattern') ||profileform.get('address').hasError('required') ) && profileform.get('address').touched">
+      <div class="error" *ngIf="profileform.get('address').hasError('required') && profileform.get('address').touched">
+        Please input your Address
+      </div>
+      <div class="error" *ngIf="profileform.get('address').hasError('minlength') && profileform.get('address').touched">
+        Minimum 5 characters
+      </div>
+      <div class="error" *ngIf="profileform.get('address').hasError('maxlength') && profileform.get('address').touched">
+        Maximum 250 characters
+      </div>
+      <div class="error" *ngIf="profileform.get('address').hasError('pattern') && profileform.get('address').touched">
+        Address invalid
+      </div>
+    </ion-item>
+  </form>
+
+  <ion-list>
+    <ion-list-header>
+      <ion-label>
+        <i class="fa fa-users"></i>Team Player</ion-label>
+    </ion-list-header>
+    <ion-item-sliding *ngFor="let player of playerList">
+      <ion-item>
+        <h2>{{player.playerName}}</h2>
+        <p>Age {{player.age}} years || Position {{player.playerPosition}}</p>
+      </ion-item>
+      <ion-item-options side="right">
+        <button ion-button color="primary">
+            <ion-icon ios="logo-instagram" md="logo-instagram"></ion-icon>
+        </button>
+        <button ion-button color="danger">
+            <ion-icon ios="logo-facebook" md="logo-facebook"></ion-icon>
+        </button>
+        <button ion-button color="dark">
+            <ion-icon ios="logo-twitter" md="logo-twitter"></ion-icon>
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
 </ion-content>

@@ -1,4 +1,5 @@
 #Creating Pages
+** If generate pages must add the component inside app.component.ts like ProfilePage components.
 
 #Creating Provider 
 ** 

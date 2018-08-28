@@ -142,7 +142,6 @@ export class SignupPage {
       loader.present();
       // Attempt to login in through our User service
       this.signup.signup(this.account).subscribe((resp) => {
-        console.log(resp);
         if (resp["isSuccessFull"]) {
           loader.dismiss();
           let toast = this.toastCtrl.create({
@@ -168,6 +167,7 @@ export class SignupPage {
         }
 
       }, (err) => {
+        loader.dismiss();
         let toast = this.toastCtrl.create({
           message: "Gagal Sign Up ! Coba Lagi !",
           duration: 3000,

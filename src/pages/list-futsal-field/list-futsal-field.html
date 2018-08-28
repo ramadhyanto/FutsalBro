@@ -1,0 +1,31 @@
+<!--
+  Generated template for the ListFutsalFieldPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>listFutsalField</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list>
+    <ion-item-sliding  *ngFor="let field of fieldList" (click)="detailField(field.id)">
+      <ion-item>
+        <h2>{{field.name}}</h2>
+        <p>{{field.price}}</p>
+      </ion-item>
+      <ion-item-options side="right">
+        <button ion-button color="primary" (click)="deleteField(field.id)">
+          <ion-icon name="mail"></ion-icon>
+          DELETE
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+</ion-content>

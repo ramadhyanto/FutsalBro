@@ -8,23 +8,16 @@ import { PropertiesProvider } from '../properties/properties';
 
 @Injectable()
 export class Api {
-
-  DEV: string = "http://192.168.1.104:8080";
-  SIT: string = "http://192.168.1.104:8080";
-  UAT: string = "http://192.168.1.104:8080";
-  PROD: string = "http://192.168.1.104:8080";
-
-  url: string = this.PROD;
-
-
+  url: string = "http://192.168.1.100:8080";
+  headers;
   constructor(public http: HttpClient, public properties: PropertiesProvider) {
   }
 
   getHeaders() {
-    if (this.properties.token) {
-      let headers = new HttpHeaders().set("Authorization", "Bearer " + this.properties.token);
-      return headers;
+    if (this.properties.token && !this.headers) {
+      this.headers = new HttpHeaders().set("Authorization", "Bearer " + this.properties.token);
     }
+    return this.headers;
   }
 
   get(endpoint: string, params?: any, reqOpts?: any) {
@@ -45,22 +38,33 @@ export class Api {
     if (this.getHeaders()) {
       reqOpts.headers = this.getHeaders();
     }
-
     return this.http.get(this.url + '/' + endpoint, reqOpts);
   }
 
   post(endpoint: string, body: any, reqOpts?: any) {
-    if (this.getHeaders()) {
-      reqOpts.headers = this.getHeaders();
+    if (!reqOpts) {
+      reqOpts = {
+        headers: this.getHeaders()
+      };
     }
     return this.http.post(this.url + '/' + endpoint, body, reqOpts);
   }
 
   put(endpoint: string, body: any, reqOpts?: any) {
+    if (!reqOpts) {
+      reqOpts = {
+        headers: this.getHeaders()
+      };
+    }
     return this.http.put(this.url + '/' + endpoint, body, reqOpts);
   }
 
   delete(endpoint: string, reqOpts?: any) {
+    if (!reqOpts) {
+      reqOpts = {
+        headers: this.getHeaders()
+      };
+    }
     return this.http.delete(this.url + '/' + endpoint, reqOpts);
   }
 

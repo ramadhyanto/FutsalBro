@@ -11,6 +11,11 @@ import { AlertController } from 'ionic-angular';
 @Injectable()
 export class PropertiesProvider {
   token: string = null;
+  userId: number = null;
+  id: number = null;
+  teamId: number = null;
+  stadionId: number = null;
+  userType: string = "";
 
   constructor(public http: HttpClient,public alertCtrl: AlertController) {
     console.log('Hello PropertiesProvider Provider');
