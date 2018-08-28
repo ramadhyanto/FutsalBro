@@ -27,4 +27,7 @@ page-signup {
     border-bottom: 1px solid #ff0000;
     
   }
+  ion-segment-button.custom-border-color-tab.segment-button.segment-activated {
+    border-color: #10a72c;
+  }
 }
