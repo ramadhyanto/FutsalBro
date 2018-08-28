@@ -27,6 +27,8 @@ import { InputFutsalFieldServiceProvider } from '../providers/input-futsal-field
 import { DetailFutsalFieldServiceProvider } from '../providers/detail-futsal-field-service/detail-futsal-field-service';
 import { ListFieldServiceProvider } from '../providers/list-field-service/list-field-service';
 import { DetailFieldServiceProvider } from '../providers/detail-field-service/detail-field-service';
+import { ListBookingFieldServiceProvider } from '../providers/list-booking-field-service/list-booking-field-service';
+import { DetailBookingFieldServiceProvider } from '../providers/detail-booking-field-service/detail-booking-field-service';
 
 // import {DashboardPage} from '../pages/dashboard/dashboard';
 
@@ -97,7 +99,9 @@ export function provideSettings(storage: Storage) {
     InputFutsalFieldServiceProvider,
     DetailFutsalFieldServiceProvider,
     ListFieldServiceProvider,
-    DetailFieldServiceProvider
+    DetailFieldServiceProvider,
+    ListBookingFieldServiceProvider,
+    DetailBookingFieldServiceProvider
   ]
 })
 export class AppModule { }

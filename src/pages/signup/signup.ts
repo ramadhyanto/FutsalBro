@@ -3,22 +3,14 @@ import { TranslateService } from '@ngx-translate/core';
 import { IonicPage, NavController, ToastController, LoadingController } from 'ionic-angular';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { SignupServiceProvider } from '../../providers/signup-service/signup-service';
-import { SelectSearchableComponent } from 'ionic-select-searchable';
 @IonicPage()
 @Component({
   selector: 'page-signup',
   templateUrl: 'signup.html'
 })
 
-// class Province {
-//   public id: number;
-//   public name: string;
-// }
 
 export class SignupPage {
-  // The account fields for the login form.
-  // If you're using the username field with or without email, make
-  // sure to add it to the type
   password: string;
   repassword: string;
   signupform: FormGroup;
@@ -117,18 +109,10 @@ export class SignupPage {
 
     
   }
-  provinceChange(event: {
-    component: SelectSearchableComponent,
-    value: any 
-  }) 
-  {
-    console.log('province:', event.value);
-}
-
-
+  
   doSignup() {
-    /*
-    if (this.account.password != this.validatePassword.repassword) {
+  
+    if (this.accountTeam.password != this.validatePassword.repassword) {
       let toast = this.toastCtrl.create({
         message: "Password tidak cocok !",
         duration: 3000,
@@ -141,7 +125,7 @@ export class SignupPage {
       });
       loader.present();
       // Attempt to login in through our User service
-      this.signup.signup(this.account).subscribe((resp) => {
+      this.signup.signup(this.accountTeam).subscribe((resp) => {
         if (resp["isSuccessFull"]) {
           loader.dismiss();
           let toast = this.toastCtrl.create({
@@ -176,7 +160,6 @@ export class SignupPage {
         toast.present();
       });
     }
-*/
   }
 
   loginPage() {
