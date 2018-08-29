@@ -31,7 +31,7 @@ export class ListFutsalFieldServiceProvider {
 
   deleteField(id: any) {
     console.log(id);
-    let req = this.api.delete("futsalField" + id);
+    let req = this.api.delete("futsalField", {body:id});
     return new Promise(resolve => {
       req.subscribe(res => {
         resolve(res)

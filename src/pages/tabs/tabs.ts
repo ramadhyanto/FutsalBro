@@ -24,7 +24,7 @@ export class TabsPage {
       this.flagTeam = true;
       this.flagStadion = false;
       this.tab1Root = "DashboardPage";
-      this.tab2Root = "SparingPage";
+      this.tab2Root = "ListBookingPage";
       this.tab3Root = "ProfilePage";
       translateService.get(['TAB1_TITLE', 'TAB2_TITLE', 'TAB3_TITLE']).subscribe(values => {
         this.tab1Title = values['TAB1_TITLE'];

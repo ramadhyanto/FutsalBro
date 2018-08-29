@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AlertController } from 'ionic-angular';
+import { CurrencyPipe } from '@angular/common';
+import * as moment from 'moment';
 
 /*
   Generated class for the PropertiesProvider provider.
@@ -17,7 +19,7 @@ export class PropertiesProvider {
   stadionId: number = null;
   userType: string = "";
 
-  constructor(public http: HttpClient,public alertCtrl: AlertController) {
+  constructor(public http: HttpClient, public alertCtrl: AlertController, private currencyPipe: CurrencyPipe) {
     console.log('Hello PropertiesProvider Provider');
   }
 
@@ -37,5 +39,15 @@ export class PropertiesProvider {
     });
     alert.present();
   }
+
+  getCurrency(amount: number) {
+    return this.currencyPipe.transform(amount, "Rp. ");
+  }
+
+  getDate(date: string) {
+    let dateConverted = moment(date).format('YYYY-MM-DD HH:mm:ss');
+    return dateConverted;
+  }
+
 
 }

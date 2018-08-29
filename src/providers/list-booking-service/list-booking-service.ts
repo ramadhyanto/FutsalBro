@@ -3,20 +3,20 @@ import { Injectable } from '@angular/core';
 import { Api } from '../api/api';
 
 /*
-  Generated class for the ListFieldProvider provider.
+  Generated class for the ListBookingServiceProvider provider.
 
   See https://angular.io/guide/dependency-injection for more info on providers
   and Angular DI.
 */
 @Injectable()
-export class ListFieldServiceProvider {
+export class ListBookingServiceProvider {
 
-  constructor(public http: HttpClient, public api: Api) {
-    console.log('Hello ListFieldProvider Provider');
+  constructor(public http: HttpClient,public api: Api) {
+    console.log('Hello ListBookingServiceProvider Provider');
   }
 
-  getField(data: any) {
-    let req = this.api.get("futsalField", data);
+  getListBooking(data: any) {
+    let req = this.api.get("booking", data);
     return new Promise(resolve => {
       req.subscribe(res => {
         resolve(res)
@@ -27,4 +27,5 @@ export class ListFieldServiceProvider {
 
     // return req;
   }
+
 }

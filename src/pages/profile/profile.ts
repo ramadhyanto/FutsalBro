@@ -5,6 +5,7 @@ import { PropertiesProvider } from '../../providers/properties/properties';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Crop } from '../../../node_modules/@ionic-native/crop';
 import { ImagePicker } from '@ionic-native/image-picker';
+import { Base64 } from '@ionic-native/base64';
 
 /**
  * Generated class for the ProfilePage page.
@@ -25,9 +26,8 @@ export class ProfilePage {
   data: { userId: number } = {
     userId: this.properties.userId
   };
-  player: { teamId: number } = {
-    teamId: this.playerId
-  };
+  player: any;
+  
 
   accountData: { id: number, userId: number, idCard: string, email: string, imageProfile: string, address: string, facebook: string, instagram: string, twitter: string, teamName: string, countTeam: number, contactNo: string, isReadyToMatch: boolean, base64Image: string } = {
     "id": 0,
@@ -57,7 +57,7 @@ export class ProfilePage {
   instagram: string;
   twitter: string;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public loadingCtrl: LoadingController, public profile: ProfileServiceProvider, public properties: PropertiesProvider, public toastCtrl: ToastController, public cropService: Crop, public imagePicker: ImagePicker) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public loadingCtrl: LoadingController, public profile: ProfileServiceProvider, public properties: PropertiesProvider, public toastCtrl: ToastController, public cropService: Crop, public imagePicker: ImagePicker, private base64: Base64) {
     let emailPattern = /^[a-z0-9!#$%&'*+\/=?^_`{|}~.-]+@[a-z0-9]([a-z0-9-]*[a-z0-9])?(\.[a-z0-9]([a-z0-9-]*[a-z0-9])?)*$/i;
     this.profileform = new FormGroup({
       idCard: new FormControl('', [Validators.required, Validators.pattern("[a-z0-9]*"), Validators.minLength(5), Validators.maxLength(20)]),
@@ -73,6 +73,9 @@ export class ProfilePage {
     this.LoadData();
   }
 
+  ionViewWillEnter() {
+    this.LoadData();
+  }
 
   LoadData() {
     let loader = this.loadingCtrl.create({
@@ -90,7 +93,11 @@ export class ProfilePage {
       this.accountData.instagram = resp["data"]["instagram"];
       this.accountData.twitter = resp["data"]["twitter"];
       this.accountData.base64Image = resp["data"]["base64Image"];
+      this.player = {
+        teamId: resp["data"]["id"]
+      };
       this.profile.getPlayer(this.player).subscribe((resp) => {
+        console.log(resp);
         this.playerList = resp["data"];
         loader.dismiss();
       }, (err) => {
@@ -126,6 +133,18 @@ export class ProfilePage {
     this.imagePicker.getPictures(options)
       .then((results) => {
         this.reduceImages(results).then(() => {
+          this.base64.encodeFile(results[0]).then((base64File: string) => {
+            console.log(base64File);
+          //   getBackground(image) {
+          //     return this._sanitizer.bypassSecurityTrustStyle(`linear-gradient(rgba(29, 29, 29, 0), rgba(16, 16, 23, 0.5)), url(${image})`);
+          // }
+            this.accountData.base64Image = base64File;
+            this.updateData();
+            this.LoadData();
+          }, (err) => {
+            console.log(err);
+          });
+          console.log(results);
           console.log('all images cropped!!');
         });
       }, (err) => { console.log(err) });
