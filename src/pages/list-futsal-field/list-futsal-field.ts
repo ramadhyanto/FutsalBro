@@ -57,6 +57,7 @@ export class ListFutsalFieldPage {
     this.listfield.deleteField({ id: id }).then((resp) => {
       console.log(resp);
       loader.dismiss();
+      this.LoadData();
     }, (err) => {
       loader.dismiss();
     });

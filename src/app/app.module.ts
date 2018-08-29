@@ -10,11 +10,13 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { ImagePicker } from '@ionic-native/image-picker';
 import { Crop } from '@ionic-native/crop';
-
+import { Base64 } from '@ionic-native/base64';
 import { Items } from '../mocks/providers/items';
 import { Settings, Api } from '../providers';
 import { MyApp } from './app.component';
-import { DatePipe } from '@angular/common'
+import { DatePipe } from '@angular/common';
+import { CurrencyPipe } from '@angular/common';
+import { PipesModule } from 'w-ng5';
 import { PropertiesProvider } from '../providers/properties/properties';
 import { SignupServiceProvider } from '../providers/signup-service/signup-service';
 import { LoginServiceProvider } from '../providers/login-service/login-service';
@@ -27,8 +29,8 @@ import { InputFutsalFieldServiceProvider } from '../providers/input-futsal-field
 import { DetailFutsalFieldServiceProvider } from '../providers/detail-futsal-field-service/detail-futsal-field-service';
 import { ListFieldServiceProvider } from '../providers/list-field-service/list-field-service';
 import { DetailFieldServiceProvider } from '../providers/detail-field-service/detail-field-service';
-import { ListBookingFieldServiceProvider } from '../providers/list-booking-field-service/list-booking-field-service';
-import { DetailBookingFieldServiceProvider } from '../providers/detail-booking-field-service/detail-booking-field-service';
+import { ListBookingServiceProvider } from '../providers/list-booking-service/list-booking-service';
+import { DetailBookingServiceProvider } from '../providers/detail-booking-service/detail-booking-service';
 
 // import {DashboardPage} from '../pages/dashboard/dashboard';
 
@@ -62,6 +64,7 @@ export function provideSettings(storage: Storage) {
   imports: [
     BrowserModule,
     HttpClientModule,
+    PipesModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -81,10 +84,12 @@ export function provideSettings(storage: Storage) {
     Items,
     ImagePicker,
     Crop,
+    Base64,
     Camera,
     SplashScreen,
     StatusBar,
     DatePipe,
+    CurrencyPipe,
     { provide: Settings, useFactory: provideSettings, deps: [Storage] },
     // Keep this to enable Ionic's runtime error handling during development
     { provide: ErrorHandler, useClass: IonicErrorHandler },
@@ -100,8 +105,8 @@ export function provideSettings(storage: Storage) {
     DetailFutsalFieldServiceProvider,
     ListFieldServiceProvider,
     DetailFieldServiceProvider,
-    ListBookingFieldServiceProvider,
-    DetailBookingFieldServiceProvider
+    ListBookingServiceProvider,
+    DetailBookingServiceProvider
   ]
 })
 export class AppModule { }

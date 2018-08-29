@@ -15,12 +15,12 @@
 
 <ion-content padding>
     <ion-list>
-        <ion-item *ngFor="let field of fieldList" (click)="getField(field.futsalFieldId,field.price)">
+        <ion-item *ngFor="let field of fieldList" (click)="getField(field.id,field.price)">
           <!-- <ion-thumbnail item-start>
             <img src="data:image/jpg;base64,{{stadium.base64Image}}">
           </ion-thumbnail> -->
-          <h2>{{field.futsalFieldName}}</h2>
-          <p>{{field.price}}</p>
+          <h2>{{field.name}}</h2>
+          <p>{{field.type}}</p>
           <button ion-button clear item-end>View</button>
         </ion-item>
       </ion-list>

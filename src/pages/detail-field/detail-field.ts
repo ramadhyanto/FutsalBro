@@ -92,7 +92,9 @@ export class DetailFieldPage {
       content: "Harap Tunggu"
     });
     loader.present();
+    console.log(this.databooking);
     this.detailfield.bookField(this.databooking).then((resp) => {
+
       console.log(resp);
       loader.dismiss();
       this.navCtrl.setRoot(MainPage, {}, {

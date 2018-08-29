@@ -22,12 +22,12 @@
       
         <ion-item>
           <ion-label stacked>Tanggal Bermain</ion-label>
-          <ion-datetime displayFormat="YYYY MMM, DD HH" [(ngModel)]="dateplay"></ion-datetime>
+          <ion-datetime displayFormat="DD/MMM/YYYY,HH" [(ngModel)]="dateplay"></ion-datetime>
         </ion-item>
 
         <ion-item>
           <ion-label stacked>Lama Bermain</ion-label>
-          <ion-input type="number" [(ngModel)]="timeplay"></ion-input>
+          <ion-input type="number" [(ngModel)]="timeplay" (ngModelChange)="timeplay = convertToNumber($event)"></ion-input>
         </ion-item>
         <button ion-button (click)="getStadium()">Search</button>
       </ion-list>
