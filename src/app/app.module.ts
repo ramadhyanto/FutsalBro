@@ -16,7 +16,6 @@ import { Settings, Api } from '../providers';
 import { MyApp } from './app.component';
 import { DatePipe } from '@angular/common';
 import { CurrencyPipe } from '@angular/common';
-import { PipesModule } from 'w-ng5';
 import { PropertiesProvider } from '../providers/properties/properties';
 import { SignupServiceProvider } from '../providers/signup-service/signup-service';
 import { LoginServiceProvider } from '../providers/login-service/login-service';
@@ -30,6 +29,7 @@ import { DetailFutsalFieldServiceProvider } from '../providers/detail-futsal-fie
 import { ListFieldServiceProvider } from '../providers/list-field-service/list-field-service';
 import { DetailFieldServiceProvider } from '../providers/detail-field-service/detail-field-service';
 import { ListBookingServiceProvider } from '../providers/list-booking-service/list-booking-service';
+import { ListBookingFieldServiceProvider } from '../providers/list-booking-field-service/list-booking-field-service';
 import { DetailBookingServiceProvider } from '../providers/detail-booking-service/detail-booking-service';
 
 // import {DashboardPage} from '../pages/dashboard/dashboard';
@@ -64,7 +64,6 @@ export function provideSettings(storage: Storage) {
   imports: [
     BrowserModule,
     HttpClientModule,
-    PipesModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -106,6 +105,7 @@ export function provideSettings(storage: Storage) {
     ListFieldServiceProvider,
     DetailFieldServiceProvider,
     ListBookingServiceProvider,
+    ListBookingFieldServiceProvider,
     DetailBookingServiceProvider
   ]
 })
