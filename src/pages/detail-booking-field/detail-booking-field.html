@@ -1,0 +1,45 @@
+<!--
+  Generated template for the DetailBookingFieldPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>detailField</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-slides pager>
+
+    <!-- <ion-slide  *ngFor="let image of listImage">
+        <img src="data:image/jpg;base64,{{image.base64Image}}">
+    </ion-slide> -->
+
+  </ion-slides>
+  <ion-item>
+    <ion-label stacked>Booking Code</ion-label>
+    <ion-input type="text" [(ngModel)]="booking.bookingCode"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label stacked>Start Time</ion-label>
+    <ion-input type="text" [(ngModel)]="booking.startTime"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label stacked>End Time</ion-label>
+    <ion-input type="text" [(ngModel)]="booking.endTime"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label stacked>Duration</ion-label>
+    <ion-input type="text" [(ngModel)]="booking.duration"></ion-input>
+  </ion-item>
+  <ion-item>
+    <button ion-button (click)="updateStatusBooking('APPROVED')" >APPROVE </button>
+    <button ion-button (click)="updateStatusBooking('REJECTED')">REJECT </button>
+  </ion-item>
+</ion-content>
+
