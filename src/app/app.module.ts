@@ -16,7 +16,6 @@ import { Settings, Api } from '../providers';
 import { MyApp } from './app.component';
 import { DatePipe } from '@angular/common';
 import { CurrencyPipe } from '@angular/common';
-import { PipesModule } from 'w-ng5';
 import { PropertiesProvider } from '../providers/properties/properties';
 import { SignupServiceProvider } from '../providers/signup-service/signup-service';
 import { LoginServiceProvider } from '../providers/login-service/login-service';
@@ -64,7 +63,6 @@ export function provideSettings(storage: Storage) {
   imports: [
     BrowserModule,
     HttpClientModule,
-    PipesModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

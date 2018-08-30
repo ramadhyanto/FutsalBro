@@ -16,13 +16,13 @@
 <ion-content padding>
   <div>
     <ion-segment [(ngModel)]="booking">
-      <ion-segment-button value="booked" (click)="getFilteredList('BOOKED')">
+      <ion-segment-button value="booked" (click)="LoadData('BOOKED');getFilteredList('BOOKED');">
         BOOKED
       </ion-segment-button>
-      <ion-segment-button value="completed" (click)="getFilteredList('COMPLETED')">
+      <ion-segment-button value="completed" (click)="LoadData('COMPLETED');getFilteredList('COMPLETED')">
         COMPLETED
       </ion-segment-button>
-      <ion-segment-button value="rejected" (click)="getFilteredList('REJECTED')">
+      <ion-segment-button value="rejected" (click)="LoadData('REJECTED');getFilteredList('REJECTED')">
         REJECTED
       </ion-segment-button>
     </ion-segment>

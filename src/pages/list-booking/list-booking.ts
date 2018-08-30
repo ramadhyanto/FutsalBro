@@ -19,6 +19,7 @@ import { ListBookingServiceProvider } from '../../providers/list-booking-service
 export class ListBookingPage {
   data: any;
   bookingList = [];
+  booking: string = "BOOKED";
   constructor(public navCtrl: NavController, public navParams: NavParams, public properties: PropertiesProvider, public loadingCtrl: LoadingController, public listBooking: ListBookingServiceProvider) {
   }
 
@@ -42,14 +43,18 @@ export class ListBookingPage {
       content: "Harap Tunggu"
     });
     loader.present();
-    console.log(this.data);
     this.listBooking.getListBooking(this.data).then((resp) => {
       this.bookingList = resp["data"];
       for (var awal = 0; awal < this.bookingList.length; awal++) {
         this.bookingList[awal].startTimeConverted = this.properties.getDate(this.bookingList[awal].startTime);
         this.bookingList[awal].endTimeConverted = this.properties.getDate(this.bookingList[awal].endTime);
       }
-      console.log(resp);
+      if (status) {
+        this.getFilteredList(status);
+      } else {
+        this.getFilteredList("BOOKED");
+      }
+
       loader.dismiss();
     }, (err) => {
       loader.dismiss();
@@ -57,13 +62,13 @@ export class ListBookingPage {
   }
 
   detailBooking(objectData) {
-    this.navCtrl.push("DetailBookingPage", {params: objectData});
+    this.navCtrl.push("DetailBookingPage", { params: objectData });
   }
 
-  getFilteredList(status){
-    return this.bookingList = this.bookingList.filter(items=>
-          items.status == status
-     );
+  getFilteredList(status) {
+    this.bookingList = this.bookingList.filter(items =>
+      items.status == status
+    );
   }
 
 }
