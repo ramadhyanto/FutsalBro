@@ -106,13 +106,8 @@ export function provideSettings(storage: Storage) {
     ListFieldServiceProvider,
     DetailFieldServiceProvider,
     ListBookingServiceProvider,
-<<<<<<< HEAD
     DetailBookingServiceProvider,
     MessagesProvider
-=======
-    ListBookingFieldServiceProvider,
-    DetailBookingServiceProvider
->>>>>>> 439727f59b67747c982a5bbe0faaba0e7e2418f8
   ]
 })
 export class AppModule { }
