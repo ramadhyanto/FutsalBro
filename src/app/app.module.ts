@@ -29,6 +29,7 @@ import { DetailFutsalFieldServiceProvider } from '../providers/detail-futsal-fie
 import { ListFieldServiceProvider } from '../providers/list-field-service/list-field-service';
 import { DetailFieldServiceProvider } from '../providers/detail-field-service/detail-field-service';
 import { ListBookingServiceProvider } from '../providers/list-booking-service/list-booking-service';
+import { ListBookingFieldServiceProvider } from '../providers/list-booking-field-service/list-booking-field-service';
 import { DetailBookingServiceProvider } from '../providers/detail-booking-service/detail-booking-service';
 import { MessagesProvider } from '../providers/messages/messages';
 
@@ -105,8 +106,13 @@ export function provideSettings(storage: Storage) {
     ListFieldServiceProvider,
     DetailFieldServiceProvider,
     ListBookingServiceProvider,
+<<<<<<< HEAD
     DetailBookingServiceProvider,
     MessagesProvider
+=======
+    ListBookingFieldServiceProvider,
+    DetailBookingServiceProvider
+>>>>>>> 439727f59b67747c982a5bbe0faaba0e7e2418f8
   ]
 })
 export class AppModule { }
