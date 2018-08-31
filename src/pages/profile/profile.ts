@@ -6,6 +6,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Crop } from '../../../node_modules/@ionic-native/crop';
 import { ImagePicker } from '@ionic-native/image-picker';
 import { Base64 } from '@ionic-native/base64';
+import { MessagesProvider } from '../../providers/messages/messages';
 
 /**
  * Generated class for the ProfilePage page.
@@ -57,7 +58,7 @@ export class ProfilePage {
   instagram: string;
   twitter: string;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public loadingCtrl: LoadingController, public profile: ProfileServiceProvider, public properties: PropertiesProvider, public toastCtrl: ToastController, public cropService: Crop, public imagePicker: ImagePicker, private base64: Base64) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public loadingCtrl: LoadingController, public profile: ProfileServiceProvider, public properties: PropertiesProvider, public toastCtrl: ToastController, public cropService: Crop, public imagePicker: ImagePicker, private base64: Base64,public messages: MessagesProvider) {
     let emailPattern = /^[a-z0-9!#$%&'*+\/=?^_`{|}~.-]+@[a-z0-9]([a-z0-9-]*[a-z0-9])?(\.[a-z0-9]([a-z0-9-]*[a-z0-9])?)*$/i;
     this.profileform = new FormGroup({
       idCard: new FormControl('', [Validators.required, Validators.pattern("[a-z0-9]*"), Validators.minLength(5), Validators.maxLength(20)]),
@@ -121,7 +122,7 @@ export class ProfilePage {
     }, (err) => {
       loader.dismiss();
       // Unable to log in
-      this.properties.showDialogError();
+      this.properties.showDialogError(this.messages.messages.NOT_FOUND);
     });
   }
 

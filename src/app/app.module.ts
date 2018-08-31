@@ -30,6 +30,7 @@ import { ListFieldServiceProvider } from '../providers/list-field-service/list-f
 import { DetailFieldServiceProvider } from '../providers/detail-field-service/detail-field-service';
 import { ListBookingServiceProvider } from '../providers/list-booking-service/list-booking-service';
 import { DetailBookingServiceProvider } from '../providers/detail-booking-service/detail-booking-service';
+import { MessagesProvider } from '../providers/messages/messages';
 
 // import {DashboardPage} from '../pages/dashboard/dashboard';
 
@@ -104,7 +105,8 @@ export function provideSettings(storage: Storage) {
     ListFieldServiceProvider,
     DetailFieldServiceProvider,
     ListBookingServiceProvider,
-    DetailBookingServiceProvider
+    DetailBookingServiceProvider,
+    MessagesProvider
   ]
 })
 export class AppModule { }
