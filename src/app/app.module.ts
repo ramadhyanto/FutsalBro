@@ -32,6 +32,8 @@ import { ListBookingServiceProvider } from '../providers/list-booking-service/li
 import { ListBookingFieldServiceProvider } from '../providers/list-booking-field-service/list-booking-field-service';
 import { DetailBookingServiceProvider } from '../providers/detail-booking-service/detail-booking-service';
 import { DetailBookingFieldServiceProvider } from '../providers/detail-booking-field-service/detail-booking-field-service';
+import { MessagesProvider } from '../providers/messages/messages';
+
 // import {DashboardPage} from '../pages/dashboard/dashboard';
 
 
@@ -107,7 +109,9 @@ export function provideSettings(storage: Storage) {
     ListBookingServiceProvider,
     ListBookingFieldServiceProvider,
     DetailBookingServiceProvider,
-    DetailBookingFieldServiceProvider
+    DetailBookingFieldServiceProvider,
+    DetailBookingServiceProvider,
+    MessagesProvider
   ]
 })
 export class AppModule { }

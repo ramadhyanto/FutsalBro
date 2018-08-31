@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Api } from '../api/api';
 
 /*
   Generated class for the DetailBookingServiceProvider provider.
@@ -10,8 +11,20 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class DetailBookingServiceProvider {
 
-  constructor(public http: HttpClient) {
+  constructor(public http: HttpClient, public api: Api) {
     console.log('Hello DetailBookingServiceProvider Provider');
+  }
+
+  uploadPayment(data: any) {
+    let req = this.api.put("booking", data);
+    return new Promise(resolve => {
+      req.subscribe(res => {
+        resolve(res);
+      }, err => {
+        console.error('ERROR', err);
+      });
+    })
+    // return req;
   }
 
 }

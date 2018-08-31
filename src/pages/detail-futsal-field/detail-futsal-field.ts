@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 import { DetailFutsalFieldServiceProvider } from '../../providers/detail-futsal-field-service/detail-futsal-field-service';
 import { PropertiesProvider } from '../../providers/properties/properties';
+import { MessagesProvider } from '../../providers/messages/messages';
 
 /**
  * Generated class for the DetailFutsalFieldPage page.
@@ -20,7 +21,7 @@ export class DetailFutsalFieldPage {
   data: any;
   detailData: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public loadingCtrl: LoadingController, public detailfield: DetailFutsalFieldServiceProvider, public properties: PropertiesProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public loadingCtrl: LoadingController, public detailfield: DetailFutsalFieldServiceProvider, public properties: PropertiesProvider, public messages: MessagesProvider) {
     this.id = this.navParams.get('id');
     this.detailData = {
       "id": this.id,
@@ -72,7 +73,7 @@ export class DetailFutsalFieldPage {
     }, (err) => {
       loader.dismiss();
       // Unable to log in
-      this.properties.showDialogError();
+      this.properties.showDialogError(this.messages.messages.NOT_FOUND);
     });
   }
 

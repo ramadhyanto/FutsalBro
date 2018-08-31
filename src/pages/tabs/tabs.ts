@@ -20,6 +20,7 @@ export class TabsPage {
   tab3Title = " ";
 
   constructor(public navCtrl: NavController, public translateService: TranslateService, public properties: PropertiesProvider) {
+    
     if (this.properties.userType == "USER_TEAM") {
       this.flagTeam = true;
       this.flagStadion = false;

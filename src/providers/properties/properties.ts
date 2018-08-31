@@ -21,12 +21,13 @@ export class PropertiesProvider {
 
   constructor(public http: HttpClient, public alertCtrl: AlertController, private currencyPipe: CurrencyPipe) {
     console.log('Hello PropertiesProvider Provider');
+  
   }
 
-  showDialogError() {
+  showDialogError(message) {
     let alert = this.alertCtrl.create({
       title: 'Attention',
-      message: 'Maaf Server sedang bermasalah coba untuk beberapa saat lagi ya',
+      message: message,
       buttons: [
         {
           text: 'OK',

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController, ToastController } from 'ionic-angular';
 import { InputFutsalFieldServiceProvider } from '../../providers/input-futsal-field-service/input-futsal-field-service';
 import { PropertiesProvider } from '../../providers/properties/properties';
+import { MessagesProvider } from '../../providers/messages/messages';
 
 /**
  * Generated class for the InputFutsalFieldPage page.
@@ -26,7 +27,7 @@ export class InputFutsalFieldPage {
     price: 0
   };
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public loadingCtrl: LoadingController, public inputField: InputFutsalFieldServiceProvider, public properties: PropertiesProvider, public toastCtrl: ToastController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public loadingCtrl: LoadingController, public inputField: InputFutsalFieldServiceProvider, public properties: PropertiesProvider, public toastCtrl: ToastController,public messages: MessagesProvider) {
   }
 
   ionViewDidLoad() {
@@ -51,7 +52,7 @@ export class InputFutsalFieldPage {
     }, (err) => {
       loader.dismiss();
       // Unable to log in
-      this.properties.showDialogError();
+      this.properties.showDialogError(this.messages.messages.NOT_FOUND);
     });
   }
 

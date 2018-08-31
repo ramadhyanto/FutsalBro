@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 import { PropertiesProvider } from '../../providers/properties/properties';
 import { ListBookingServiceProvider } from '../../providers/list-booking-service/list-booking-service';
+import { MessagesProvider } from '../../providers/messages/messages';
 
 
 /**
@@ -19,7 +20,9 @@ import { ListBookingServiceProvider } from '../../providers/list-booking-service
 export class ListBookingPage {
   data: any;
   bookingList = [];
-  constructor(public navCtrl: NavController, public navParams: NavParams, public properties: PropertiesProvider, public loadingCtrl: LoadingController, public listBooking: ListBookingServiceProvider) {
+  booking: string = "booked";
+  message: string;
+  constructor(public navCtrl: NavController, public navParams: NavParams, public properties: PropertiesProvider, public loadingCtrl: LoadingController, public listBooking: ListBookingServiceProvider, public messages: MessagesProvider) {
   }
 
   ionViewDidLoad() {
@@ -27,43 +30,62 @@ export class ListBookingPage {
     this.data = {
       teamId: this.properties.teamId
     };
-    this.LoadData();
+    this.LoadData("BOOKED");
   }
 
   ionViewWillEnter() {
-    this.data = {
-      teamId: this.properties.teamId
-    };
-    this.LoadData();
+    // this.data = {
+    //   teamId: this.properties.teamId
+    // };
+    // this.LoadData();
   }
 
-  LoadData() {
+  LoadData(status) {
     let loader = this.loadingCtrl.create({
       content: "Harap Tunggu"
     });
     loader.present();
-    console.log(this.data);
     this.listBooking.getListBooking(this.data).then((resp) => {
-      this.bookingList = resp["data"];
-      for (var awal = 0; awal < this.bookingList.length; awal++) {
-        this.bookingList[awal].startTimeConverted = this.properties.getDate(this.bookingList[awal].startTime);
-        this.bookingList[awal].endTimeConverted = this.properties.getDate(this.bookingList[awal].endTime);
+      console.log(resp["data"]);
+      if (resp["data"]["length"] > 0) {
+        this.bookingList = resp["data"];
+        this.bookingList = this.bookingList.filter(items =>
+          items.status == status
+        );
+        for (var awal = 0; awal < this.bookingList.length; awal++) {
+          this.bookingList[awal].startTime = this.properties.getDate(this.bookingList[awal].startTime);
+          this.bookingList[awal].endTime = this.properties.getDate(this.bookingList[awal].endTime);
+        }
+        console.log("sukses");
+        loader.dismiss();
+      } else {
+        this.properties.showDialogError(this.messages.messages.NOT_FOUND);
       }
-      console.log(resp);
-      loader.dismiss();
+
     }, (err) => {
       loader.dismiss();
     });
   }
 
   detailBooking(objectData) {
-    this.navCtrl.push("DetailBookingPage", {params: objectData});
+    this.navCtrl.push("DetailBookingPage", { params: objectData });
   }
 
-  getFilteredList(status){
-    return this.bookingList = this.bookingList.filter(items=>
-          items.status == status
-     );
-  }
+  // getFilteredList(status) {
+  //   console.log(status);
+  //   console.log(this.bookingList);
+  //   let loader = this.loadingCtrl.create({
+  //     content: "Harap Tunggu"
+  //   });
+  //   loader.present();
+  //   this.bookingList = this.bookingList.filter(items =>
+  //     items.status == status
+  //   );
+  //   loader.dismiss();
+  //   if (this.bookingList.length == 0) {
+  //     this.properties.showDialogError(this.messages.messages.NOT_FOUND);
+  //   }
+  //   console.log(this.bookingList);
+  // }
 
 }

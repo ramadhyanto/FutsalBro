@@ -4,6 +4,7 @@ import { IonicPage, NavController, ToastController, LoadingController } from 'io
 import { MainPage } from '../';
 import { PropertiesProvider } from '../../providers/properties/properties';
 import { LoginServiceProvider } from '../../providers/login-service/login-service';
+import { MessagesProvider } from '../../providers/messages/messages';
 
 @IonicPage()
 @Component({
@@ -14,7 +15,7 @@ export class LoginPage {
   // The account fields for the login form.
   // If you're using the username field with or without email, make
   // sure to add it to the type
-  account: {username: string, password: string} = {
+  account: { username: string, password: string } = {
     username: 'ramadhyanto',
     password: 'rama'
   };
@@ -27,7 +28,8 @@ export class LoginPage {
     public toastCtrl: ToastController,
     public translateService: TranslateService,
     public loadingCtrl: LoadingController,
-    public properties: PropertiesProvider) {
+    public properties: PropertiesProvider,
+    public messages: MessagesProvider) {
 
     this.translateService.get('LOGIN_ERROR').subscribe((value) => {
       // this.loginErrorString = value;
@@ -41,6 +43,7 @@ export class LoginPage {
     });
     loader.present();
     this.login.login(this.account).subscribe((resp) => {
+      console.log(resp);
       loader.dismiss();
       let toast = this.toastCtrl.create({
         message: "Sukses Login !",
@@ -55,7 +58,7 @@ export class LoginPage {
     }, (err) => {
       loader.dismiss();
       // Unable to log in
-      this.properties.showDialogError();
+      this.properties.showDialogError(this.messages.messages.NOT_FOUND);
     });
   }
 

@@ -16,13 +16,13 @@
 <ion-content padding>
   <div>
     <ion-segment [(ngModel)]="booking">
-      <ion-segment-button value="booked" (click)="getFilteredList('BOOKED')">
+      <ion-segment-button value="booked" (click)="LoadData('BOOKED');">
         BOOKED
       </ion-segment-button>
-      <ion-segment-button value="completed" (click)="getFilteredList('COMPLETED')">
-        COMPLETED
+      <ion-segment-button value="completed" (click)="LoadData('PAID')">
+        PAID
       </ion-segment-button>
-      <ion-segment-button value="rejected" (click)="getFilteredList('REJECTED')">
+      <ion-segment-button value="rejected" (click)="LoadData('REJECTED')">
         REJECTED
       </ion-segment-button>
     </ion-segment>
@@ -31,63 +31,80 @@
   <div [ngSwitch]="booking">
 
     <ion-list *ngSwitchCase="'booked'">
-      <ion-item *ngFor="let list of bookingList" (click)="detailBooking(list)">
-        <ion-card *ngIf="list.status==='BOOKED'">
-          <ion-card-header>
-            {{list.status}}
-          </ion-card-header>
-          <ion-card-content>
-            <ion-grid>
-              <ion-row>
-                <ion-col col-12>{{list.startTimeConverted}}</ion-col>
-              </ion-row>
-              <ion-row>
-                <ion-col col-6>{{list.endTimeConverted}}</ion-col>
-              </ion-row>
-            </ion-grid>
-          </ion-card-content>
-        </ion-card>
-      </ion-item>
+      <div *ngIf="!bookingList.length">
+        <p>Booked</p>
+      </div>
+      <div *ngIf="bookingList.length">
+        <ion-item *ngFor="let list of bookingList" (click)="detailBooking(list)">
+          <ion-card *ngIf="list.status==='BOOKED'">
+            <ion-card-header>
+              {{list.bookingCode}}
+            </ion-card-header>
+            <ion-card-content>
+              <ion-grid>
+                <ion-row>
+                  <ion-col col-12>{{list.startTime}}</ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col col-6>{{list.endTime}}</ion-col>
+                </ion-row>
+              </ion-grid>
+            </ion-card-content>
+          </ion-card>
+        </ion-item>
+      </div>
     </ion-list>
 
     <ion-list *ngSwitchCase="'completed'">
-      <ion-item *ngFor="let list of bookingList" (click)="detailBooking(list)">
-        <ion-card>
-          <ion-card-header>
-            {{list.status}}
-          </ion-card-header>
-          <ion-card-content>
-            <ion-grid>
-              <ion-row>
-                <ion-col col-12>{{list.startTimeConverted}}</ion-col>
-              </ion-row>
-              <ion-row>
-                <ion-col col-6>{{list.endTimeConverted}}</ion-col>
-              </ion-row>
-            </ion-grid>
-          </ion-card-content>
-        </ion-card>
-      </ion-item>
+      <div *ngIf="!bookingList.length">
+        <p>Completed</p>
+      </div>
+      <div *ngIf="bookingList.length">
+        <ion-item *ngFor="let list of bookingList" (click)="detailBooking(list)">
+          <ion-card>
+            <ion-card-header>
+              {{list.bookingCode}}
+            </ion-card-header>
+            <ion-card-content>
+              <ion-grid>
+                <ion-row>
+                  <ion-col col-12>{{list.startTime}}</ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col col-6>{{list.endTime}}</ion-col>
+                </ion-row>
+              </ion-grid>
+            </ion-card-content>
+          </ion-card>
+        </ion-item>
+      </div>
+
     </ion-list>
 
     <ion-list *ngSwitchCase="'rejected'">
-      <ion-item *ngFor="let list of bookingList" (click)="detailBooking(list)">
-        <ion-card>
-          <ion-card-header>
-            {{list.status}}
-          </ion-card-header>
-          <ion-card-content>
-            <ion-grid>
-              <ion-row>
-                <ion-col col-12>{{list.startTimeConverted}}</ion-col>
-              </ion-row>
-              <ion-row>
-                <ion-col col-6>{{list.endTimeConverted}}</ion-col>
-              </ion-row>
-            </ion-grid>
-          </ion-card-content>
-        </ion-card>
-      </ion-item>
+      <div *ngIf="!bookingList.length">
+        <p>Rejected</p>
+      </div>
+      <div *ngIf="bookingList.length">
+        <ion-item *ngFor="let list of bookingList" (click)="detailBooking(list)">
+          <ion-card>
+            <ion-card-header>
+              {{list.bookingCode}}
+            </ion-card-header>
+            <ion-card-content>
+              <ion-grid>
+                <ion-row>
+                  <ion-col col-12>{{list.startTime}}</ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col col-6>{{list.endTime}}</ion-col>
+                </ion-row>
+              </ion-grid>
+            </ion-card-content>
+          </ion-card>
+        </ion-item>
+      </div>
+
     </ion-list>
 
   </div>
