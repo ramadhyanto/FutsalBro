@@ -29,10 +29,10 @@ import { DetailFutsalFieldServiceProvider } from '../providers/detail-futsal-fie
 import { ListFieldServiceProvider } from '../providers/list-field-service/list-field-service';
 import { DetailFieldServiceProvider } from '../providers/detail-field-service/detail-field-service';
 import { ListBookingServiceProvider } from '../providers/list-booking-service/list-booking-service';
-import { ListBookingFieldServiceProvider } from '../providers/list-booking-field-service/list-booking-field-service';
 import { DetailBookingServiceProvider } from '../providers/detail-booking-service/detail-booking-service';
-import { DetailBookingFieldServiceProvider } from '../providers/detail-booking-field-service/detail-booking-field-service';
 import { MessagesProvider } from '../providers/messages/messages';
+import { ListBookingStadionServiceProvider } from '../providers/list-booking-stadion-service/list-booking-stadion-service';
+import { DetailBookingStadionServiceProvider } from '../providers/detail-booking-stadion-service/detail-booking-stadion-service';
 
 // import {DashboardPage} from '../pages/dashboard/dashboard';
 
@@ -107,11 +107,11 @@ export function provideSettings(storage: Storage) {
     ListFieldServiceProvider,
     DetailFieldServiceProvider,
     ListBookingServiceProvider,
-    ListBookingFieldServiceProvider,
     DetailBookingServiceProvider,
-    DetailBookingFieldServiceProvider,
     DetailBookingServiceProvider,
-    MessagesProvider
+    MessagesProvider,
+    ListBookingStadionServiceProvider,
+    DetailBookingStadionServiceProvider
   ]
 })
 export class AppModule { }
