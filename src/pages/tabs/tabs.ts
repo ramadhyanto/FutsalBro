@@ -38,12 +38,12 @@ export class TabsPage {
       this.flagTeam = false;
       this.flagStadion = true;
       this.tab1Root = "InputFutsalFieldPage";
-      this.tab2Root = "ListBookingFieldPage";
-      this.tab3Root = "ListFutsalFieldPage";
-      translateService.get(['TAB4_TITLE','TAB5_TITLE','TAB6_TITLE']).subscribe(values => {
+      this.tab2Root = "ListBookingStadionPage";
+     // this.tab3Root = "ListFutsalFieldPage";
+      translateService.get(['TAB4_TITLE','TAB5_TITLE']).subscribe(values => {
         this.tab1Title = values['TAB4_TITLE'];
         this.tab2Title = values['TAB5_TITLE'];
-        this.tab3Title = values['TAB6_TITLE'];
+        //this.tab3Title = values['TAB6_TITLE'];
       });
     }
   }

@@ -33,6 +33,8 @@ import { DetailSparingServiceProvider } from '../providers/detail-sparing-servic
 import { ListSparingServiceProvider } from '../providers/list-sparing-service/list-sparing-service';
 import { ListBookingTeamServiceProvider } from '../providers/list-booking-team-service/list-booking-team-service';
 import { DetailBookingTeamServiceProvider } from '../providers/detail-booking-team-service/detail-booking-team-service';
+import { ListBookingStadionServiceProvider } from '../providers/list-booking-stadion-service/list-booking-stadion-service';
+import { DetailBookingStadionServiceProvider } from '../providers/detail-booking-stadion-service/detail-booking-stadion-service';
 import { TypeSparingServiceProvider } from '../providers/type-sparing-service/type-sparing-service';
 
 // import {DashboardPage} from '../pages/dashboard/dashboard';
@@ -112,6 +114,8 @@ export function provideSettings(storage: Storage) {
     ListSparingServiceProvider,
     ListBookingTeamServiceProvider,
     DetailBookingTeamServiceProvider,
+    ListBookingStadionServiceProvider,
+    DetailBookingStadionServiceProvider,
     TypeSparingServiceProvider
   ]
 })
