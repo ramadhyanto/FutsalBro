@@ -9,7 +9,7 @@ import { Api } from '../api/api';
   and Angular DI.
 */
 @Injectable()
-export class DetailBookingServiceProvider {
+export class DetailBookingTeamServiceProvider {
 
   constructor(public http: HttpClient, public api: Api) {
     console.log('Hello DetailBookingServiceProvider Provider');

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 /**
- * Generated class for the DashboardPage page.
+ * Generated class for the TypeSparingPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -10,28 +10,21 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 @IonicPage()
 @Component({
-  selector: 'page-dashboard',
-  templateUrl: 'dashboard.html',
+  selector: 'page-type-sparing',
+  templateUrl: 'type-sparing.html',
 })
-export class DashboardPage {
+export class TypeSparingPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad DashboardPage');
+    console.log('ionViewDidLoad TypeSparingPage');
   }
 
-  inputField () {
-    this.navCtrl.push("InputFutsalFieldPage");
-  }
-
-  bookingField () {
-    this.navCtrl.push("BookingPage");
-  }
-
-  sparing () {
-    this.navCtrl.push("TypeSparingPage");
+  listSparing (params) {
+    console.log(params);
+    this.navCtrl.push("ListSparingPage",{ params: params});
   }
 
 }

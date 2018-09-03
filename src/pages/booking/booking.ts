@@ -49,6 +49,8 @@ export class BookingPage {
     var timeTemp = moment(this.startTime);
     timeTemp.add(this.timeplay, 'H');
     var endTime = timeTemp.format('YYYY-MM-DD HH:mm:ss');
+    console.log(this.startTime);
+    console.log(endTime);
     // ADDING HOUR WITH DURATION
     this.navCtrl.push("ListStadiumPage", { page: 1, max: 10, searchValue: this.location, startTime: this.startTime, endTime: endTime, duration: this.timeplay });
   }

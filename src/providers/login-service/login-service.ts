@@ -24,8 +24,10 @@ export class LoginServiceProvider {
       this.properties.token = res.access_token;
       this.properties.userId = res.userId;
       this.properties.userType = res.userType;
-      if (res.userType == "USER_TEAM") {
+      console.log(this.properties.userId);
+      if (this.properties.userType == "USER_TEAM") {
         console.log(this.properties.userId);
+        console.log(this.properties.userType = res.userType);
         this.getIdTeam({userId: this.properties.userId});
       } else {
         this.getIdStadion({userId: this.properties.userId});

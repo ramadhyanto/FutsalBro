@@ -1,0 +1,82 @@
+<!--
+  Generated template for the ListSparingPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>listSparing</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <div>
+    <ion-segment [(ngModel)]="sparing">
+      <ion-segment-button value="today" (click)="LoadData('TODAY');">
+        TODAY
+      </ion-segment-button>
+      <ion-segment-button value="thisWeek" (click)="LoadData('THISWEEK')">
+        THIS WEEK
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+
+  <div [ngSwitch]="sparing">
+
+    <ion-list *ngSwitchCase="'today'">
+      <div *ngIf="!sparingList">
+        <p>No Data</p>
+      </div>
+      <div *ngIf="sparingList">
+        <ion-item *ngFor="let list of sparingList" (click)="detailBooking(list)">
+          <ion-card *ngIf="list.status==='BOOKED'">
+            <ion-card-header>
+              {{list.futsalFieldName}}
+            </ion-card-header>
+            <ion-card-content>
+              <ion-grid>
+                <ion-row>
+                  <ion-col col-12>{{list.team1Name}}</ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col col-6>{{list.province}}</ion-col>
+                </ion-row>
+              </ion-grid>
+            </ion-card-content>
+          </ion-card>
+        </ion-item>
+      </div>
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'thisWeek'">
+      <div *ngIf="!sparingList">
+        <p>No Data</p>
+      </div>
+      <div *ngIf="sparingList">
+        <ion-item *ngFor="let list of sparingList" (click)="detailBooking(list)">
+          <ion-card>
+            <ion-card-header>
+              {{list.futsalFieldName}}
+            </ion-card-header>
+            <ion-card-content>
+              <ion-grid>
+                <ion-row>
+                  <ion-col col-12>{{list.team1Name}}</ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col col-6>{{list.province}}</ion-col>
+                </ion-row>
+              </ion-grid>
+            </ion-card-content>
+          </ion-card>
+        </ion-item>
+      </div>
+
+    </ion-list>
+
+  </div>
+</ion-content>

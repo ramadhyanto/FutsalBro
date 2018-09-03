@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 import { PropertiesProvider } from '../../providers/properties/properties';
-import { ListBookingServiceProvider } from '../../providers/list-booking-service/list-booking-service';
+import { ListBookingTeamServiceProvider } from '../../providers/list-booking-team-service/list-booking-team-service';
 import { MessagesProvider } from '../../providers/messages/messages';
 
 
@@ -14,15 +14,15 @@ import { MessagesProvider } from '../../providers/messages/messages';
 
 @IonicPage()
 @Component({
-  selector: 'page-list-booking',
-  templateUrl: 'list-booking.html',
+  selector: 'page-list-booking-team',
+  templateUrl: 'list-booking-team.html',
 })
-export class ListBookingPage {
+export class ListBookingTeamPage {
   data: any;
   bookingList = [];
   booking: string = "booked";
   message: string;
-  constructor(public navCtrl: NavController, public navParams: NavParams, public properties: PropertiesProvider, public loadingCtrl: LoadingController, public listBooking: ListBookingServiceProvider, public messages: MessagesProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public properties: PropertiesProvider, public loadingCtrl: LoadingController, public listBooking: ListBookingTeamServiceProvider, public messages: MessagesProvider) {
   }
 
   ionViewDidLoad() {
@@ -68,24 +68,7 @@ export class ListBookingPage {
   }
 
   detailBooking(objectData) {
-    this.navCtrl.push("DetailBookingPage", { params: objectData });
+    this.navCtrl.push("DetailBookingTeamPage", { params: objectData });
   }
-
-  // getFilteredList(status) {
-  //   console.log(status);
-  //   console.log(this.bookingList);
-  //   let loader = this.loadingCtrl.create({
-  //     content: "Harap Tunggu"
-  //   });
-  //   loader.present();
-  //   this.bookingList = this.bookingList.filter(items =>
-  //     items.status == status
-  //   );
-  //   loader.dismiss();
-  //   if (this.bookingList.length == 0) {
-  //     this.properties.showDialogError(this.messages.messages.NOT_FOUND);
-  //   }
-  //   console.log(this.bookingList);
-  // }
 
 }

@@ -46,7 +46,9 @@ export class PropertiesProvider {
   }
 
   getDate(date: string) {
-    let dateConverted = moment(date).format('YYYY-MM-DD HH:mm:ss');
+    console.log(date);
+    let dateTemp = date.substring(0, 19);
+    let dateConverted = moment(dateTemp).format('YYYY-MM-DD HH:mm:ss');
     return dateConverted;
   }
 

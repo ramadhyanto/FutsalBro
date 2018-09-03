@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { IonicPage, NavController, ToastController, LoadingController, SegmentButton } from 'ionic-angular';
+import { IonicPage, NavController, ToastController, LoadingController } from 'ionic-angular';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { SignupServiceProvider } from '../../providers/signup-service/signup-service';
 @IonicPage()

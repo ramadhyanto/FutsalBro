@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 import { PropertiesProvider } from '../../providers/properties/properties';
-import { DetailBookingServiceProvider } from '../../providers/detail-booking-service/detail-booking-service';
+import { DetailBookingTeamServiceProvider } from '../../providers/detail-booking-team-service/detail-booking-team-service';
 import { MainPage } from '..';
 
 
@@ -14,12 +14,12 @@ import { MainPage } from '..';
 
 @IonicPage()
 @Component({
-  selector: 'page-detail-booking',
-  templateUrl: 'detail-booking.html',
+  selector: 'page-detail-booking-team',
+  templateUrl: 'detail-booking-team.html',
 })
-export class DetailBookingPage {
+export class DetailBookingTeamPage {
   bookingData: any;
-  constructor(public navCtrl: NavController, public navParams: NavParams, public loadingCtrl: LoadingController, public properties: PropertiesProvider,public detailBooking: DetailBookingServiceProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public loadingCtrl: LoadingController, public properties: PropertiesProvider,public detailBooking: DetailBookingTeamServiceProvider) {
     this.bookingData = this.navParams.get("params");
     }
 

@@ -8,7 +8,7 @@ import { PropertiesProvider } from '../properties/properties';
 
 @Injectable()
 export class Api {
-  url: string = "http://192.168.1.103:8080";
+  url: string = "http://localhost:8080/futsalrestapi";
   headers;
   constructor(public http: HttpClient, public properties: PropertiesProvider) {
   }

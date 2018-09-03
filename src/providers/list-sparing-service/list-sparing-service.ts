@@ -3,20 +3,20 @@ import { Injectable } from '@angular/core';
 import { Api } from '../api/api';
 
 /*
-  Generated class for the ListBookingServiceProvider provider.
+  Generated class for the ListSparingServiceProvider provider.
 
   See https://angular.io/guide/dependency-injection for more info on providers
   and Angular DI.
 */
 @Injectable()
-export class ListBookingServiceProvider {
+export class ListSparingServiceProvider {
 
-  constructor(public http: HttpClient,public api: Api) {
-    console.log('Hello ListBookingServiceProvider Provider');
+  constructor(public http: HttpClient, public api: Api) {
+    console.log('Hello ListSparingServiceProvider Provider');
   }
 
-  getListBooking(data: any) {
-    let req = this.api.get("booking", data);
+  getListSparing(data: any) {
+    let req = this.api.get("playing", data);
     return new Promise(resolve => {
       req.subscribe(res => {
         resolve(res)

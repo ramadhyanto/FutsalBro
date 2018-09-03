@@ -28,10 +28,12 @@ import { InputFutsalFieldServiceProvider } from '../providers/input-futsal-field
 import { DetailFutsalFieldServiceProvider } from '../providers/detail-futsal-field-service/detail-futsal-field-service';
 import { ListFieldServiceProvider } from '../providers/list-field-service/list-field-service';
 import { DetailFieldServiceProvider } from '../providers/detail-field-service/detail-field-service';
-import { ListBookingServiceProvider } from '../providers/list-booking-service/list-booking-service';
-import { ListBookingFieldServiceProvider } from '../providers/list-booking-field-service/list-booking-field-service';
-import { DetailBookingServiceProvider } from '../providers/detail-booking-service/detail-booking-service';
 import { MessagesProvider } from '../providers/messages/messages';
+import { DetailSparingServiceProvider } from '../providers/detail-sparing-service/detail-sparing-service';
+import { ListSparingServiceProvider } from '../providers/list-sparing-service/list-sparing-service';
+import { ListBookingTeamServiceProvider } from '../providers/list-booking-team-service/list-booking-team-service';
+import { DetailBookingTeamServiceProvider } from '../providers/detail-booking-team-service/detail-booking-team-service';
+import { TypeSparingServiceProvider } from '../providers/type-sparing-service/type-sparing-service';
 
 // import {DashboardPage} from '../pages/dashboard/dashboard';
 
@@ -105,9 +107,12 @@ export function provideSettings(storage: Storage) {
     DetailFutsalFieldServiceProvider,
     ListFieldServiceProvider,
     DetailFieldServiceProvider,
-    ListBookingServiceProvider,
-    DetailBookingServiceProvider,
-    MessagesProvider
+    MessagesProvider,
+    DetailSparingServiceProvider,
+    ListSparingServiceProvider,
+    ListBookingTeamServiceProvider,
+    DetailBookingTeamServiceProvider,
+    TypeSparingServiceProvider
   ]
 })
 export class AppModule { }
